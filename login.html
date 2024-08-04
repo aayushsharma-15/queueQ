@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+  <!-- Meta Tags -->
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Laralink">
+  
+  <!-- Page Title -->
+  <title>login</title>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="assets/css/fontawesome.css" />
+  <link rel="stylesheet" href="assets/css/slick.css" />
+  <link rel="stylesheet" href="assets/css/lightgallery.min.css" />
+  <link rel="stylesheet" href="assets/css/animate.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  
+  <style>
+    body {
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: #fff;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+    }
+
+    .form-box {
+      background: #03031190;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      width: 90%;
+      max-width: 400px;
+      z-index: 2;
+    }
+
+    .form-box h2 {
+      font-size: 2em;
+      font-weight: 700;
+      margin: 0 0 15px 0;
+      color: #fff;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      overflow: hidden;
+      white-space: nowrap;
+      border-right: 3px solid;
+      width: 0;
+    }
+
+    .form-box p {
+      margin: 0 0 15px 0;
+      color: #fff;
+    }
+
+    .form-box form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-box label {
+      margin-bottom: 5px;
+      text-align: left;
+    }
+
+    .form-box input {
+      padding: 10px;
+      margin-bottom: 15px;
+      border: none;
+      border-radius: 5px;
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+    }
+
+    .form-box input::placeholder {
+      color: #bbb;
+    }
+
+    .form-box button {
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      background: #c21666a7;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .form-box button:hover {
+      background: #c21666;
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    @keyframes blink-caret {
+      from, to { border-color: transparent; }
+      50% { border-color: #fff; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="form-box">
+      <form id="login-form">
+        
+
+        <label for="email">Email</label>
+        <input type="email" id="email" required>
+
+        <label for="password">Password</label>
+        <input type="password" id="password" required>
+
+        <p>Do not have an account? <u><a href="signup.html">Signup</a></u></p>
+        <button type="submit" id="login-btn">Login</button>
+      </form>
+    </div>
+  </div>
+  <div id="background-wrap">
+    <div class="bubble x1"></div>
+    <div class="bubble x2"></div>
+    <div class="bubble x3"></div>
+    <div class="bubble x4"></div>
+    <div class="bubble x5"></div>
+    <div class="bubble x6"></div>
+    <div class="bubble x7"></div>
+    <div class="bubble x8"></div>
+    <div class="bubble x9"></div>
+    <div class="bubble x10"></div>
+    
+  </div>
+  <div id="particles-js"></div>
+
+  <!-- Firebase SDKs -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-analytics.js";
+    import { getAuth, signInWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js";
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyA2swpMLvuA4omwCLVewjdvJm6cwR5Wj3c",
+      authDomain: "queueq-a9cbe.firebaseapp.com",
+      projectId: "queueq-a9cbe",
+      storageBucket: "queueq-a9cbe.appspot.com",
+      messagingSenderId: "509065047368",
+      appId: "1:509065047368:web:4890ee0a01cd61e1de177d",
+      measurementId: "G-QBY4SFYXRH"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const auth = getAuth();
+
+    document.getElementById('login-form').addEventListener('submit', (event) => {
+      event.preventDefault();
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+
+      signInWithEmailAndPassword(auth, email, password)
+        .then(userCredential => {
+          // Signed in
+          const user = userCredential.user;
+          alert('Login successful!');
+          window.location.href = "myservices.html";
+
+        })
+        .catch(error => {
+          const errorMessage = error.message;
+          alert(`Error: ${errorMessage}`);
+        });
+    });
+  </script>
+</body>
+</html>

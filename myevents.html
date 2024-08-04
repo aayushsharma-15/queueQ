@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MyEvents</title>
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+  <!-- Custom Styles -->
+  <style>
+  
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #3f455144;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 5px 20px;
+  box-shadow: rgba(208, 205, 205, 0.5);
+}
+
+.user-info {
+  font-size: 1em;
+  padding: 5px 10px;
+  border-radius: 4px;
+
+}
+
+
+.event-type  {
+  background-color: #0a101e;
+  padding: 5px 10px;
+  border-radius: 5px;
+  align-items:last baseline;
+  margin-left: 1087px;
+  
+  
+}
+
+.events-container {
+  padding: 40px;
+}
+
+.event-card {
+  left : 0;
+  background-color: #a9adb825;
+  color: white;
+  border-radius: 10px;
+  box-shadow: 2px 4px 8px #c21666;
+  margin-bottom: 20px;
+  padding: 30px;
+  display:flex;
+  align-items: center;
+  z-index: 1;
+}
+
+
+
+.event-card img {
+  width: 120px;
+  height:120px;
+  border-radius: 20px;
+  margin-right: 20px;
+  
+}
+
+.event-details {
+  flex: 1;
+}
+
+.event-details h3 {
+  margin: 1px;
+}
+
+.event-details p {
+  margin: 5px 1;
+}
+
+.event-meta {
+  display: flex;
+  align-items: center;
+}
+
+.event-meta p {
+  margin: 0 10px 0 0;
+  display: flex;
+  align-items: center;
+}
+
+.event-meta p img {
+  margin-right: 5px;
+}
+.event-tags span {
+  display: inline-flex;
+  background-color: transparent;
+  padding: 5px;
+  border-radius: 5px;
+  border: 0.5px solid #ddd; /* Thin border with light grey color */
+  margin-top: 5px;
+  margin-right: 5px; /* Add some spacing between tags */
+  font-size: 14px; /* Adjust font size if needed */
+  line-height: 1; /* Adjust line height if needed */
+}
+
+
+
+</style>
+</head>
+<body>
+    <div class="header">
+        <div class="top-bar">
+            <div class="user-info" id="user-info"></div>
+        </div>
+    </div>
+    
+      <div class="events-container" id="events-container">
+        <!-- Events will be dynamically inserted here -->
+      </div>
+    
+      <script type="module" src="script1.js"></script>
+    </body>
+</html>

@@ -573,6 +573,18 @@ hr {
   font-weight: 300;
   color: #c21666;
 }
+.st-hero-arrow {
+  display: block;
+  text-align: center;
+  margin: 20px auto; /* Adjust margin as needed */
+  font-size: 40px; /* Adjust size as needed */
+  color: #fff; /* Adjust color as needed */
+  transition: transform 0.3s ease; /* Smooth transformation on hover */
+}
+
+.st-hero-arrow:hover {
+  transform: scale(1.6); /* Slightly enlarge on hover */
+}
 
 .st-social-group {
   background-color: #101624;
@@ -708,20 +720,14 @@ hr {
   right: 0;
   top: 0;
   opacity: 0.1;
+  z-index: 1;
+  animation: infinite ease-in;
 }
 
 /* KEYFRAMES */
-@-webkit-keyframes animateBubble {
-  0% {
-    margin-top: 1000px;
-  }
-  100% {
-    margin-top: -100%;
-  }
-}
 @keyframes animateBubble {
   0% {
-    margin-top: 1000px;
+    margin-top: 500px;
   }
   100% {
     margin-top: -100%;
@@ -1494,3 +1500,29 @@ Testimonial
 .row {
   min-height: 600px; /* Adjust the height as needed */
 }
+.st-social-btn {
+  display: inline-block;
+  margin: 10px;
+  text-align: center;
+  color: #fff;
+  text-decoration: none;
+}
+
+.st-social-icon {
+  display: block;
+  font-size: 2px;
+}
+
+.st-icon-name {
+  display: block;
+  margin-top: 5px;
+}
+
+.st-social-btn.active {
+  color: #c21666;
+}
+
+.st-social-btn:hover {
+  color: #c21666;
+}
+

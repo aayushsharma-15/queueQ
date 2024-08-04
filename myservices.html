@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-
+<html lang="en">
 <head>
   <!-- Meta Tags -->
   <!-- Page Title -->
@@ -13,8 +13,56 @@
   <link rel="stylesheet" href="assets/css/lightgallery.min.css" />
   <link rel="stylesheet" href="assets/css/animate.css" />
   <link rel="stylesheet" href="assets/css/style.css" />
+  <style>
+   .top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #3f455144;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 5px 20px;
+  box-shadow: rgba(208, 205, 205, 0.5);
+}
+
+.user-info {
+  font-size: 1em;
+  padding: 5px 10px;
+  border-radius: 4px;
+
+}
+.dropdown-menu{
+  padding: 8px;
+  margin-left: 1335px;
+  background-color: #a9adb825;
+  border: 1px #a9adb825;
+  color: white;
+  border-radius: 4px;
+  font-size: 1em;
+}
+
+
+#dropdown-toggle {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+  </style>
 </head>
-<section>
+<body>
+  <div class="top-bar">
+  <div class="user-info" id="user-info"></div>
+  <button id="dropdown-toggle">▼</button>
+        <div class="dropdown-menu" id="dropdown-menu">
+          <a href="login.html" id="logout">Log Out</a>
+        </div>
+  </div>
+  <section>
     <div class="st-height-b100 st-height-lg-b80"></div>
     <div class="container">
       <div class="st-section-heading st-style1">
@@ -24,40 +72,90 @@
     </div>
     <div class="st-height-b100 st-height-lg-b60"></div>
 
-
     <!-- Iconbox Container -->
-
     <div class="container">
       <div class="row">
-
         <div class="col-lg-4 col-md-6">
-          <div class="st-iconbox st-style1">
-            <div class="st-iconbox-icon">
-            
+          <a href="hosting.html" class="d-block">
+            <div class="st-iconbox st-style1">
+              <div class="st-iconbox-icon">
+                <!-- Add icon here if needed -->
+              </div>
+              <h2 class="st-iconbox-title">Host</h2>
+              <div class="st-iconbox-text">Lorem ipsum dolor sittem ametamn elit, per sed do eiusmoad teimpor sittem elit inuning utsed sittem.</div>
             </div>
-            <h2 class="st-iconbox-title">Host</h2>
-            <div class="st-iconbox-text">Lorem ipsum dolor sittem ametamn elit, per sed do eiusmoad teimpor sittem elit inuning utsed sittem.</div>
-          </div>
+          </a>
         </div><!-- .col -->
         
         <div class="col-lg-4 col-md-6">
+          <a href="explore.html" class="d-block">
           <div class="st-iconbox st-style1">
             <div class="st-iconbox-icon">
-             
+              <!-- Add icon here if needed -->
             </div>
             <h2 class="st-iconbox-title">Explore</h2>
             <div class="st-iconbox-text">Lorem ipsum dolor sittem ametamn elit, per sed do eiusmoad teimpor sittem elit inuning utsed sittem.</div>
           </div>
         </div><!-- .col -->
-        <div class="col-lg-4 col-md-6">
-            <div class="st-iconbox st-style1">
-              <div class="st-iconbox-icon">
-               
-              </div>
-              <h2 class="st-iconbox-title">My Events</h2>
-              <div class="st-iconbox-text">Lorem ipsum dolor sittem ametamn elit, per sed do eiusmoad teimpor sittem elit inuning utsed sittem.</div>
-            </div>
         
-               
+        <div class="col-lg-4 col-md-6">
+          <a href = "myevents.html", class = "d-block">
+          <div class="st-iconbox st-style1">
+            <div class="st-iconbox-icon">
+              <!-- Add icon here if needed -->
+            </div>
+            <h2 class="st-iconbox-title">My Events</h2>
+            <div class="st-iconbox-text">Lorem ipsum dolor sittem ametamn elit, per sed do eiusmoad teimpor sittem elit inuning utsed sittem.</div>
+          </div>
+        </div><!-- .col -->
+      </div><!-- .row -->
+    </div><!-- .container -->
   </section>
-  </html>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-app.js";
+    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js";
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyA2swpMLvuA4omwCLVewjdvJm6cwR5Wj3c",
+      authDomain: "queueq-a9cbe.firebaseapp.com",
+      projectId: "queueq-a9cbe",
+      storageBucket: "queueq-a9cbe.appspot.com",
+      messagingSenderId: "509065047368",
+      appId: "1:509065047368:web:4890ee0a01cd61e1de177d",
+      measurementId: "G-QBY4SFYXRH"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const userInfoDiv = document.getElementById('user-info');
+
+      onAuthStateChanged(auth, user => {
+        if (user) {
+          userInfoDiv.textContent = `Logged in as : ${user.email}`;
+        } else {
+          userInfoDiv.textContent = 'Not logged in';
+        }
+      });
+    });
+    document.addEventListener('DOMContentLoaded', () => {
+  const dropdownMenu = document.getElementById('dropdown-menu');
+  const dropdownToggle = document.getElementById('dropdown-toggle');
+  
+  dropdownToggle.addEventListener('click', () => {
+    dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+  });
+
+  // Close the dropdown if the user clicks outside of it
+  window.addEventListener('click', (event) => {
+    if (!dropdownToggle.contains(event.target) && !dropdownMenu.contains(event.target)) {
+      dropdownMenu.style.display = 'none';
+    }
+  });
+});
+  </script>
+</body>
+</html>

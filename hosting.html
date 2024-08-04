@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Host Your Event - queueQ</title>
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <!-- Custom Styles -->
+  <style>
+    .container {
+      max-width: 700px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #0a101e;
+      border-radius: 8px;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #c21666;
+    }
+    label {
+      font-weight: 100;
+    }
+    .form-group {
+      margin-bottom: 20px;
+      color: #fff;
+    }
+    textarea {
+      resize: none;
+    }
+    button[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      background-color: #c21666;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button[type="submit"]:hover {
+      background-color: #780d3f;
+      transform: scale(1.05);
+    }
+    footer {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .form-control {
+      background-color: #a9adb825;
+      color: white;
+    }
+    .form-control:focus {
+      background-color: #a9adb825;
+      color: white;
+      border-color: #007bff;
+      box-shadow: none;
+    }
+    .form-control option {
+      background-color: #a9adb825;
+      color: white;
+    }
+    .form-control:focus option {
+      background-color: #0a101e;
+      color: white;
+    }
+    .d-none {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="container">
+      <h2>Host Your Event</h2>
+      <form id="host-event-form">
+        <div class="form-group">
+          <label for="event-name">Event Name</label>
+          <input type="text" id="event-name" name="event-name" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label for="image">Image URL</label>
+          <input type="text" id="image" name="image" class="form-control" placeholder="Enter image URL">
+        </div>
+        <div class="form-group">
+          <label for="organisation">Enter Your Organisation</label>
+          <input type="text" class="form-control" id="organisation" name="organisation" placeholder="Enter Your Organisation" required>
+        </div>
+        <div class="form-group">
+          <label for="eventType">Event Type</label>
+          <select class="form-control" id="eventType" name="eventType" required>
+            <option value="party">Party</option>
+            <option value="competition">Competition</option>
+            <option value="education">Education</option>
+            <option value="cultural">Cultural</option>
+            <option value="sports">Sports</option>
+            <option value="conference">Conference</option>
+            <option value="workshop">Workshop</option>
+            <option value="seminar">Seminar</option>
+            <option value="networking">Networking</option>
+            <option value="concert">Concert</option>
+            <option value="webinar">Webinar</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="event-location">Event Location</label>
+          <input type="text" id="event-location" name="event-location" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label for="tags">Tags (comma-separated)</label>
+          <input type="text" id="tags" name="tags" class="form-control" placeholder="e.g., Coding Challenge, Engineering Students, fun, hackathon" required>
+        </div>
+      
+        <div class="form-group">
+          <label for="activity">Number of Activities</label>
+          <select class="form-control" id="activity" name="activity" required>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+          </select>
+        </div>
+
+
+        <!-- Activity Fields -->
+        <div id="activities-container">
+          <!-- Activity 1 -->
+          <div class="form-group" id="activity-1-group">
+            <label for="activity-1">Activity 1</label>
+            <input type="text" id="activity-1" name="activity-1" class="form-control" required>
+          </div>
+          <div class="form-group" id="activity-start-date-time-1-group">
+            <label for="activity-start-date-time-1">Start Date and Time for Activity 1</label>
+            <input type="datetime-local" id="activity-start-date-time-1" name="activity-start-date-time-1" class="form-control" required>
+          </div>
+          <div class="form-group" id="activity-end-date-time-1-group">
+            <label for="activity-end-date-time-1">End Date and Time for Activity 1</label>
+            <input type="datetime-local" id="activity-end-date-time-1" name="activity-end-date-time-1" class="form-control" required>
+          </div>
+          <div class="form-group" id="activity-coupons-1-group">
+            <label for="activity-coupons-1">Number of Coupons for Activity 1</label>
+            <input type="number" id="activity-coupons-1" name="activity-coupons-1" class="form-control" min="1" required>
+          </div>
+
+          <!-- Activity 2 -->
+          <div class="form-group d-none" id="activity-2-group">
+            <label for="activity-2">Activity 2</label>
+            <input type="text" id="activity-2" name="activity-2" class="form-control">
+          </div>
+          <div class="form-group d-none" id="activity-start-date-time-2-group">
+            <label for="activity-start-date-time-2">Start Date and Time for Activity 2</label>
+            <input type="datetime-local" id="activity-start-date-time-2" name="activity-start-date-time-2" class="form-control">
+          </div>
+          <div class="form-group d-none" id="activity-end-date-time-2-group">
+            <label for="activity-end-date-time-2">End Date and Time for Activity 2</label>
+            <input type="datetime-local" id="activity-end-date-time-2" name="activity-end-date-time-2" class="form-control">
+          </div>
+          <div class="form-group d-none" id="activity-coupons-2-group">
+            <label for="activity-coupons-2">Number of Coupons for Activity 2</label>
+            <input type="number" id="activity-coupons-2" name="activity-coupons-2" class="form-control" min="1">
+          </div>
+
+          <!-- Activity 3 -->
+          <div class="form-group d-none" id="activity-3-group">
+            <label for="activity-3">Activity 3</label>
+            <input type="text" id="activity-3" name="activity-3" class="form-control">
+          </div>
+          <div class="form-group d-none" id="activity-start-date-time-3-group">
+            <label for="activity-start-date-time-3">Start Date and Time for Activity 3</label>
+            <input type="datetime-local" id="activity-start-date-time-3" name="activity-start-date-time-3" class="form-control" >
+          </div>
+          <div class="form-group d-none" id="activity-end-date-time-3-group">
+            <label for="activity-end-date-time-3">End Date and Time for Activity 3</label>
+            <input type="datetime-local" id="activity-end-date-time-3" name="activity-end-date-time-3" class="form-control" >
+          </div>
+          <div class="form-group d-none" id="activity-coupons-3-group">
+            <label for="activity-coupons-3">Number of Coupons for Activity 3</label>
+            <input type="number" id="activity-coupons-3" name="activity-coupons-3" class="form-control" min="1" >
+          </div>
+
+          <!-- Activity 4 -->
+          <div class="form-group d-none" id="activity-4-group">
+            <label for="activity-4">Activity 4</label>
+            <input type="text" id="activity-4" name="activity-4" class="form-control">
+          </div>
+          <div class="form-group d-none" id="activity-start-date-time-4-group">
+            <label for="activity-start-date-time-4">Start Date and Time for Activity 4</label>
+            <input type="datetime-local" id="activity-start-date-time-4" name="activity-start-date-time-4" class="form-control" >
+          </div>
+          <div class="form-group d-none" id="activity-end-date-time-4-group">
+            <label for="activity-end-date-time-4">End Date and Time for Activity 4</label>
+            <input type="datetime-local" id="activity-end-date-time-4" name="activity-end-date-time-4" class="form-control" >
+          </div>
+          <div class="form-group d-none" id="activity-coupons-4-group">
+            <label for="activity-coupons-4">Number of Coupons for Activity 4</label>
+            <input type="number" id="activity-coupons-4" name="activity-coupons-4" class="form-control" min="1" >
+          </div>
+        </div>
+        
+        <!-- JavaScript to handle dynamic fields -->
+        <script>
+          document.getElementById('activity').addEventListener('change', function() {
+            var numberOfActivities = parseInt(this.value);
+            
+            for (var i = 1; i <= 4; i++) {
+              var activityGroup = document.getElementById('activity-' + i + '-group');
+              var startDateTimeGroup = document.getElementById('activity-start-date-time-' + i + '-group');
+              var endDateTimeGroup = document.getElementById('activity-end-date-time-' + i + '-group');
+              var couponsGroup = document.getElementById('activity-coupons-' + i + '-group');
+              
+              if (i <= numberOfActivities) {
+                activityGroup.classList.remove('d-none');
+                startDateTimeGroup.classList.remove('d-none');
+                endDateTimeGroup.classList.remove('d-none');
+                couponsGroup.classList.remove('d-none');
+              } else {
+                activityGroup.classList.add('d-none');
+                startDateTimeGroup.classList.add('d-none');
+                endDateTimeGroup.classList.add('d-none');
+                couponsGroup.classList.add('d-none');
+              }
+            }
+          });
+
+          // Trigger change event on page load to set initial state
+          document.getElementById('activity').dispatchEvent(new Event('change'));
+        </script>
+        <script type="module">
+          import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-app.js";
+          import { getFirestore, collection, addDoc, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-firestore.js";
+          import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js";
+
+          const firebaseConfig = {
+            apiKey: "AIzaSyA2swpMLvuA4omwCLVewjdvJm6cwR5Wj3c",
+            authDomain: "queueq-a9cbe.firebaseapp.com",
+            projectId: "queueq-a9cbe",
+            storageBucket: "queueq-a9cbe.appspot.com",
+            messagingSenderId: "509065047368",
+            appId: "1:509065047368:web:4890ee0a01cd61e1de177d",
+            measurementId: "G-QBY4SFYXRH"
+          };
+
+          const app = initializeApp(firebaseConfig);
+          const db = getFirestore(app);
+          const auth = getAuth(app);
+
+
+          document.getElementById('host-event-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const eventName = document.getElementById('event-name').value;
+            const organisation = document.getElementById('organisation').value;
+            const eventType = document.getElementById('eventType').value;
+            const eventLocation = document.getElementById('event-location').value;
+            const numberOfActivities = parseInt(document.getElementById('activity').value);
+            const tags = document.getElementById('tags').value.split(',').map(tag => tag.trim());
+            const image = document.getElementById('image').value;
+
+          onAuthStateChanged(auth, async (user) => {
+
+        if (user) {
+          const userEmail = user.email;
+          
+          try {
+            const eventRef = await addDoc(collection(db, "events"), {
+              eventName,
+              organisation,
+              eventType,
+              eventLocation,
+              numberOfActivities,
+              tags,
+              image,
+              userEmail  // Store the user's email with the event
+            });
+
+            for (let i = 1; i <= numberOfActivities; i++) {
+              const activityName = document.getElementById(`activity-${i}`).value;
+              const activityStartDateTime = new Date(document.getElementById(`activity-start-date-time-${i}`).value);
+              const activityEndDateTime = new Date(document.getElementById(`activity-end-date-time-${i}`).value);
+              const activityCoupons = parseInt(document.getElementById(`activity-coupons-${i}`).value);
+
+              await setDoc(doc(collection(db, "events", eventRef.id, "activities"), `${i}`), {
+                name: activityName,
+                startDateTime: activityStartDateTime,
+                endDateTime: activityEndDateTime,
+                coupons: activityCoupons
+              });
+            }
+
+            alert("Event hosted successfully!");
+          } catch (error) {
+            console.error("Error adding document: ", error);
+            alert("Error hosting event. Please try again.");
+          }
+        } else {
+          alert("User is not authenticated. Please log in.");
+        }
+      });
+    });
+
+        </script>
+
+        <button type="submit" id="create-event-btn" class="btn btn-primary">Host</button>
+      </form>
+    </div>
+  </main>
+</body>
+</html>

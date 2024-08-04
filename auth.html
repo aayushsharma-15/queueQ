@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auth Page</title>
+</head>
+<body>
+  <div class="container">
+    <div class="form-container" id="register-container">
+      <h2>Register</h2>
+      <input type="text" id="register-email" placeholder="Email">
+      <input type="password" id="register-password" placeholder="Password">
+      <button id="register-btn">Register</button>
+    </div>
+
+    <div class="form-container" id="login-container">
+      <h2>Login</h2>
+      <input type="text" id="login-email" placeholder="Email">
+      <input type="password" id="login-password" placeholder="Password">
+      <button id="login-btn">Login</button>
+    </div>
+  </div>
+
+  <!-- Firebase SDKs -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-analytics.js";
+    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js";
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyA2swpMLvuA4omwCLVewjdvJm6cwR5Wj3c",
+      authDomain: "queueq-a9cbe.firebaseapp.com",
+      projectId: "queueq-a9cbe",
+      storageBucket: "queueq-a9cbe.appspot.com",
+      messagingSenderId: "509065047368",
+      appId: "1:509065047368:web:4890ee0a01cd61e1de177d",
+      measurementId: "G-QBY4SFYXRH"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const auth = getAuth();
+
+    // Register
+    document.getElementById('register-btn').addEventListener('click', () => {
+      const email = document.getElementById('register-email').value;
+      const password = document.getElementById('register-password').value;
+
+      createUserWithEmailAndPassword(auth, email, password)
+        .then(userCredential => {
+          // Signed in
+          const user = userCredential.user;
+          alert('Registration successful!');
+        })
+        .catch(error => {
+          const errorMessage = error.message;
+          alert(`Error: ${errorMessage}`);
+        });
+    });
+
+    // Login
+    document.getElementById('login-btn').addEventListener('click', () => {
+      const email = document.getElementById('login-email').value;
+      const password = document.getElementById('login-password').value;
+
+      signInWithEmailAndPassword(auth, email, password)
+        .then(userCredential => {
+          // Signed in
+          const user = userCredential.user;
+          alert('Login successful!');
+        })
+        .catch(error => {
+          const errorMessage = error.message;
+          alert(`Error: ${errorMessage}`);
+        });
+    });
+  </script>
+</body>
+</html>

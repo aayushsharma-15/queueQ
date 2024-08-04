@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Explore - queueQ</title>
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+  <!-- Custom Styles -->
+  <style>
+  
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#search-input {
+  flex: 1;
+  padding: 8px;
+  margin-right: 10px;
+  background-color: #a9adb825;
+  border: 1px solid #a9adb825;
+  color: white;
+  border-radius: 4px;
+  transition: border-color 0.3s; /* Smooth transition for border color change */
+}
+
+#search-input:focus {
+  border-color: #c21666; /* Change to the desired border color when focused */
+  outline: none; /* Remove default outline */
+}
+
+
+.filters select {
+  padding: 8px;
+  margin-left: 10px;
+  background-color: #a9adb825;
+  border: 1px #a9adb825;
+  color: white;
+  border-radius: 4px;
+}
+
+.filters select option {
+      background-color: #a9adb825;
+      color: white;
+    }
+    .filters select:focus option {
+      background-color: #0a101e;
+      color: white;
+    }
+    
+    .event-type  {
+  background-color: #0a101e;
+  padding: 5px 10px;
+  border-radius: 5px;
+  align-items:last baseline;
+  margin-left: 1087px;
+  
+  
+}
+
+.events-container {
+  padding: 20px;
+}
+
+.event-card {
+  background-color: #a9adb825;
+  color: white;
+  border-radius: 10px;
+  box-shadow: 2px 4px 8px #c21666;
+  margin-bottom: 20px;
+  padding: 30px;
+  display:flex;
+  align-items: center;
+}
+
+
+
+.event-card img {
+  width: 120px;
+  height:120px;
+  border-radius: 20px;
+  margin-right: 20px;
+  
+}
+
+.event-details {
+  flex: 1;
+}
+
+.event-details h3 {
+  margin: 1px;
+}
+
+.event-details p {
+  margin: 5px 1;
+}
+
+.event-meta {
+  display: flex;
+  align-items: center;
+}
+
+.event-meta p {
+  margin: 0 10px 0 0;
+  display: flex;
+  align-items: center;
+}
+
+.event-meta p img {
+  margin-right: 5px;
+}
+.event-tags span {
+  display: inline-flex;
+  background-color: transparent;
+  padding: 5px;
+  border-radius: 5px;
+  border: 0.5px solid #ddd; /* Thin border with light grey color */
+  margin-top: 5px;
+  margin-right: 5px; /* Add some spacing between tags */
+  font-size: 14px; /* Adjust font size if needed */
+  line-height: 1; /* Adjust line height if needed */
+}
+
+
+
+</style>
+</head>
+<body>
+    <div class="header">
+        <input type="text" placeholder="Search events..." id="search-input">
+        <div class="filters">
+          <select id="category-filter">
+            <option value="all">All Categories</option>
+            <option value="hackathon">Hackathon</option>
+            <option value="workshop">Workshop</option>
+          </select>
+          <select id="sort-filter">
+            <option value="date">Sort by Date</option>
+            <option value="popularity">Sort by Popularity</option>
+          </select>
+        </div>
+      </div>
+    
+      <div class="events-container" id="events-container">
+        <!-- Events will be dynamically inserted here -->
+      </div>
+    
+      <script type="module" src="script.js"></script>
+    </body>
+</html>
